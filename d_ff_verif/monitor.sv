@@ -13,7 +13,7 @@ class monitor;
 		tr=new();
 		forever begin
 			@(posedge dif.clk);
-			trc.dout=dif.dout;
+			tr.dout=dif.dout;
 			mbxms.put(tr);
 			tr.display("MON");
 		end

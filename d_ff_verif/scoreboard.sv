@@ -2,6 +2,7 @@
 class scoreboard;
 	transaction mtrc;
 	transaction dtrc;
+	transaction strc;
 	mailbox #(transaction)mbxms;
 	mailbox #(transaction)mbxds;
 	event eventsg;
@@ -15,8 +16,10 @@ class scoreboard;
 		forever begin
 			mbxms.get(mtrc);
 			mbxds.get(dtrc);
-			trc.display("SCO");
-			if (dtrc.din==mtrc.dout) begin
+			strc.din=dtrc.din;
+			strc.dout=mtrc.dout;
+			strc.display("SCO");
+			if (strc.din==strc.dout) begin
 				$display("[SCO]  :  Data Matched");
 			end
 			else begin

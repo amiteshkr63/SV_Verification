@@ -13,7 +13,7 @@ class driver;
 		dif.rst_n<=1'b0;
 		dif.din<=0;
 		repeat(3)@(posedge dif.clk);
-		dif.rst_n<=1;b1;
+		dif.rst_n<=1'b1;
 		$display("DUT DONE RESETING @%t",$time);
 	endtask : reset
 
