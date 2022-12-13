@@ -1,7 +1,10 @@
 `include "environment.sv"
 module tb ();
+	
 	environment env;
-  	fifo_if fif();
+	bit[31:0] pkt;
+	fifo_if fif();
+  	
   	sync_FIFO_dut uut(fif.clk, fif.rst_n, fif.rd, fif.wr, fif.data_in,
 		fif.data_out, fif.empty, fif.full);
 
@@ -13,7 +16,14 @@ module tb ();
 
 	initial begin
 		env=new(fif);
-		env.gen.count=40;//
+		if ($value$plusargs("PKT=%d",pkt)) begin
+			env.gen.count=pkt;
+			$display("TOTAL PACKET GENERATED=%d", pkt);
+		end
+		else begin
+			env.gen.count=20;
+			$display("HELLO pkt=%d", pkt);
+		end 
 		env.run();
 	end
 

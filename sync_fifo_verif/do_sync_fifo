@@ -1,5 +1,5 @@
 quit -sim
 project compileall
-vsim -suppress ALL -voptargs=+acc -fsmdebug -debugDB tb
+vsim -suppress ALL -voptargs=+acc -fsmdebug -debugDB tb +PKT=10
 add wave -r *
 run 2000
