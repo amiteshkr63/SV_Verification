@@ -1,0 +1,5 @@
+quit -sim
+project compileall
+vsim -suppress ALL -voptargs=+acc tb +PKT=5
+add wave *
+run 1000
